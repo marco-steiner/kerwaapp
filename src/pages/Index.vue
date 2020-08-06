@@ -57,6 +57,7 @@ query Home ($page: Int) {
 }
 </page-query>
 
+
 <script>
 const axios = require('axios')
 import { Pager } from 'gridsome'
