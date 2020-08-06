@@ -27,7 +27,7 @@ module.exports = {
           },
           {
             typeName: "Timetableblock",
-            route: '/wp/v2/timetableblock?order=asc',
+            route: '/wp/v2/timetableblock',
             normalize: true,
           },
           {

@@ -1,28 +1,38 @@
 <template>
-    <div class="content container">
+  <div class="content container">
     <h1>Kerwakalender</h1>
-    <keep-alive>
-        <KalenderEintrag></KalenderEintrag>
-    </keep-alive>
+    <div class="post-list">
+      <div v-for="{ node } in $page.allWordPressEvent.edges" :key="node.id">
+        <Event :event="node" />
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-import KalenderEintrag from '~/components/KalenderEintrag.vue'
-
-    export default {
-        mounted() {
-        },
-        data() {
-            return {}
-        },
-        methods: {
-        },
-        components: {
-            KalenderEintrag
-        },
-        metaInfo: {
-            title: 'Kerwakalender'
-        }
+<page-query>
+query Home ($page: Int) {
+    allWordPressEvent (page: $page, perPage: 100, order:ASC) {
+    edges {
+      node {
+        id
+        title
+        content
+        customdate
+      }
     }
+  }
+}
+</page-query>
+
+<script>
+import Event from '~/components/Event.vue'
+
+export default {
+  components: {
+    Event
+  },
+  metaInfo: {
+    title: 'Kerwakalender'
+  }
+}
 </script>

@@ -44,17 +44,13 @@
 
 <page-query>
 query Home ($page: Int) {
-  allWordPressPost (page: $page, perPage: 10) @paginate {
-    pageInfo {
-      totalPages
-      currentPage
-    }
+    allWordPressEvent (page: $page, perPage: 1, order:ASC) {
     edges {
       node {
         id
         title
-        path
-        excerpt
+        content
+        customdate
       }
     }
   }

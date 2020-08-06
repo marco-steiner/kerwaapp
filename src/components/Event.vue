@@ -1,16 +1,13 @@
 <template>
   <div class="timeTableEntry">
     <div class="calendar">
-        <div class="calendarHead">
-        </div>
-        <div class="calendarContent">
-        </div>
+        <div class="calendarHead">{{event.customdate[1]}}</div>
+        <div class="calendarContent">{{event.customdate[0]}}</div>
     </div>
     <div class="timeTableItemList">
         <div class="timeTableItem">
-            <b><p v-html="event.title" /></b><br>
-            <p v-html="event.content" />
-            <p v-html="event.customdate" />
+          <div class="timeTableItemHeadline">{{ event.title }}</div>
+            {{event.customdate[2]}}
         </div>
     </div>
     
@@ -31,7 +28,7 @@ export default {
 <style lang="scss">
   .timeTableEntry {
     margin-bottom: 15px;
-    padding: 10px 6px;
+    padding: 8px;
     border-radius: 13px;
     -webkit-box-shadow: 0 2px 8px 0 #d8d8d8;
     box-shadow: 0 2px 8px 0 #d8d8d8;
@@ -46,19 +43,19 @@ export default {
       width: 62px;
       height: 23px;
       position: absolute;
-      background-color: #ffd175;
+      background-color: $primaryColor;
       border-radius: 10px 10px 0 0;
       font-size: 16px;
       letter-spacing: 1px;
-      padding-left: 4px;
+      padding: 2px 0 0 3px;
       color: #fff;
       text-align: center;
     }
     .calendarContent {
       width: 62px;
       position: absolute;
-      top: 18px;
-      font-size: 30px;
+      top: 25px;
+      font-size: 28px;
       letter-spacing: -1px;
       padding-right: 2px;
       color: #4c566b;
@@ -67,6 +64,15 @@ export default {
   }
   .timeTableItemList {
     margin-left: 80px;
-    min-height: 70px;
+    min-height: 62px;
+    display: table;
+    .timeTableItem {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .timeTableItemHeadline {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
   }
 </style>
