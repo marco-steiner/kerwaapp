@@ -70,13 +70,14 @@ nav[role="navigation"] a {
 .post-list li {
   padding: 0.3em 0;
 }
-
+/*
 @media only screen and (orientation:landscape) {
   body {
     width: 100vh;
     transform: rotate(-90deg);
   }
-}
+}*/
+
 input, select {
   font-size: 100%;
 }
