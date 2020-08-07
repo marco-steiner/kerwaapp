@@ -44,22 +44,19 @@
 
 <page-query>
 query Home ($page: Int) {
-  allWordPressPost (page: $page, perPage: 10) @paginate {
-    pageInfo {
-      totalPages
-      currentPage
-    }
+    allWordPressEvent (page: $page, perPage: 1, order:ASC) {
     edges {
       node {
         id
         title
-        path
-        excerpt
+        content
+        customdate
       }
     }
   }
 }
 </page-query>
+
 
 <script>
 const axios = require('axios')
@@ -70,11 +67,13 @@ import 'vueperslides/dist/vueperslides.css'
 
 export default {
   mounted() {
-      this.getEventPosts();
+      //this.getEventPosts();
       this.getRandomSong();
       this.turnOffAnimate();
   },
   created() {
+    this.getKerwa();
+
   },
   data() {
       return {
@@ -107,6 +106,10 @@ export default {
   computed: {
   },
   methods: {
+    getKerwa() {
+      this.slides[0].title = this.$page.allWordPressEvent.edges[0].node.title;
+      this.slides[0].content = this.$page.allWordPressEvent.edges[0].node.customdate[2];
+    },
     getEventPosts() {
     axios.get(this.eventPostsUrl, {params: this.eventPostsData})
         .then((response) => {
