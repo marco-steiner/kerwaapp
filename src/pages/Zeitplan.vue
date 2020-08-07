@@ -11,7 +11,7 @@
 
 <page-query>
 query Home ($page: Int) {
-    allWordPressTimetableblock (page: $page, perPage: 10, order: ASC) {
+    allWordPressTimetableblock (page: $page, perPage: 10) {
     edges {
       node {
         id
